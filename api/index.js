@@ -12,7 +12,8 @@ app.get('/api/hello', async (req, res) => {
     const ip = req.headers['x-real-ip'] || req.headers['x-forwarded-for'];
     const apiKey = 'JdX78tZKXgvyGqYA3GiAI5TzcZinnZ6z';
 
-    const city = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${apiKey}&q=${ip}`);
+    const requestCity = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${apiKey}&q=${ip}`);
+    const city = await requestCity.json();
     const cityKey = city.Key;
     const cityName = city.EnglishName;
 
