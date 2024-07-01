@@ -12,9 +12,9 @@ app.get('/', (req, res) => res.send('From backend track HNG Stage 1: HI!'));
 app.get('/api/hello', async (req, res) => {
     const ip = req.headers['x-real-ip'] || req.headers['x-forwarded-for'];
 
-    // const city = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${apiKey}&q=${ip}`);
-    // const cityKey = city.Key;
-    // const cityName = city.EnglishName;
+    const city = await fetch(`http://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=${apiKey}&q=${ip}`);
+    const cityKey = city.Key;
+    const cityName = city.EnglishName;
 
     // const weather = await fetch(`http://dataservice.accuweather.com/currentconditions/v1/${cityKey}?apikey=${apiKey}`);
     // const temperature = weather[0].Temperature;
@@ -26,7 +26,7 @@ app.get('/api/hello', async (req, res) => {
     //     greeting: `Hello ${req.query.visitor_name}!, the temperature is ${temperatureInDegrees} degrees Celcius in ${cityName}`
     // }
 
-    res.send(ip);
+    res.send(city);
 });
 
 export default app;
