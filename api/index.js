@@ -30,6 +30,7 @@ app.get('/api/hello', async (req, res) => {
     }
 
     res.send(visitor);
+    return cityName;
 });
 
 export default app;
