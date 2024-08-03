@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const apiKey = 'Go1REba8PTrB2grCNy9AgnQ1IGeNr8ws';
 
 app.listen(port, () => console.log(`app started on port ${port}`));
+app.use(express.json());
 
 app.get('/', (req, res) => res.send('From backend track HNG Stage 1: HI!'));
 
@@ -30,7 +31,6 @@ app.get('/api/hello', async (req, res) => {
     }
 
     res.send(visitor);
-    return cityName;
 });
 
 export default app;
